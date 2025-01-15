@@ -10,3 +10,14 @@ npm install --save-exact ejs
 
 -Cài đặt package env
 npm install --save-exact dotenv
+
+-cấu hình mô hình mvc
++config
++controller
++middleware
++migration
++model
++routes
++seeder
++service
++view
