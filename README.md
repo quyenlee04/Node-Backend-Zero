@@ -21,3 +21,9 @@ npm install --save-exact dotenv
 +seeder
 +service
 +view
+
+-cài đặt mysql
+npm i mysql2
+npm install --save mysql2
+
+
