@@ -10,6 +10,9 @@ const webRouter = require('./routes/web');
 const port = process.env.PORT || 3000;
 const hostname = process.env.HOST_NAME;
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.use('/', webRouter);
 //config view engine
 configViewEngine(app);
