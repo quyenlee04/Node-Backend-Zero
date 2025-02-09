@@ -1,6 +1,6 @@
 const connection = require('../config/database');
 
-const postCreateuser = (req, res) => {
+const postCreateuser = async (req, res) => {
     let email = req.body.email;
     let name = req.body.name;
     let city = req.body.city;
@@ -8,17 +8,12 @@ const postCreateuser = (req, res) => {
     console.log(">>>> email: ", email, "name: ", name, "city: ", city);
 
 
-
-
-    connection.query(
-        `INSERT INTO Users (email, name, city)
-         VALUES (?, ?, ?)`,
-        [email, name, city],
-        function (err, result) {
-            res.send("Success!");
-        },
-
+    let [result, fields] = await connection.query(
+        `INSERT INTO Users (email, name, city) VALUES (?, ?, ?)`, [email, name, city]
     );
+
+    console.log(">>>>", result);
+    res.send('success');
 }
 module.exports = {
     postCreateuser
