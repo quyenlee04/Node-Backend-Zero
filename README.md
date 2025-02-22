@@ -1,3 +1,5 @@
+học xong video 43
+--------------------------
 npm init
 npm install express
 npm install --save-dev nodemon
@@ -32,4 +34,5 @@ Một nguyên tắc cơ bản là một App sẽ implements một connection poo
 
 Ngăn chặn connections leaking
 Connection pools thì triển khai một config là giới hạn max connection có thể mở tại 1 thời điểm. Leak connection sẽ làm cho lời gọi connect() bị treo mãi mãi ( vì connection pools sẽ từ chối mở 1 connection mới và nó sẽ chờ đợi một connection "available"). Để ngăn leak hãy đảm bảo rằng code của bạn gọi close() khi không sử dụng.
+
 
