@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update User</title>
+    <title>Delete User</title>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
@@ -16,9 +16,9 @@
     </div>
 
     <div class="form">
-        <form action="/update-user" method="POST">
+        <form action="/delete-user" method="POST">
             <fieldset>
-                <legend>Update User</legend>
+                <legend>Delete User</legend>
                 <div class="input-group d-none">
                     <label>Id:</label>
                     <input type="text" name="userId" value="<%= userEdit.id %>">
@@ -27,16 +27,7 @@
                     <label>Email:</label>
                     <input type="text" name="email" value="<%= userEdit.email %>">
                 </div>
-                <div class="input-group">
-                    <label>Name:</label>
-                    <input type="text" name="name" value="<%= userEdit.name %>">
-                </div>
-                <div class="input-group">
-                    <label>City:</label>
-                    <input type="text" name="city" value="<%= userEdit.city %>">
-                </div>
-                <div>
-                    <button class="btn-add">Save</button>
+                    <button class="btn-add">Confirm</button>
                 </div>
 
             </fieldset>
