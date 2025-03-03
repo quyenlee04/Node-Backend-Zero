@@ -1,16 +1,18 @@
 const connection = require('../config/database');
 const { param } = require('../routes/web');
+const User = require('../models/User');
 const { getAllUsers, getUserId, updateUser, deleteUser } = require('../service/CRUDService');
 
 const getHomepage = async (req, res) => {
-    let result = await getAllUsers();
-    return res.render('home.ejs', { listUser: result });
+    let results = await User.find({});
+    return res.render('home.ejs', { listUser: results });
 
 }
 
 const getUpdateUser = async (req, res) => {
     const userId = req.params.id
-    let user = await getUserId(userId)
+    // let user = await getUserId(userId)
+    let user = await User.findById(userId).exec();
     res.render('update.ejs', { userEdit: user });
 }
 
@@ -28,7 +30,8 @@ const postUpdateUser = async (req, res) => {
     let city = req.body.city;
     let userId = req.body.userId;
 
-    await updateUser(email, name, city, userId);
+    await User.updateOne({ _id: userId }, { name: name, email: email, city: city });
+    // await updateUser(email, name, city, userId);
 
     // res.send('Update success');
     res.redirect('/');
@@ -37,7 +40,7 @@ const postUpdateUser = async (req, res) => {
 const postDeleteUser = async (req, res) => {
     const userId = req.params.id;
     let user = await getUserId(userId);
-    res.render('delete.ejs', { userEdit :user });
+    res.render('delete.ejs', { userEdit: user });
 }
 
 const postHandleRemoveUser = async (req, res) => {
