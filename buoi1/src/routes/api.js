@@ -1,7 +1,7 @@
 const express = require('express');
 const routerAPI = express.Router();
 
-const {getUserAPI} = require('../controller/apiController');
+const { getUserAPI, postUserAPI, putUserAPI, deleteUserAPI, uploadFileAPI, handleFileUploads } = require('../controller/apiController');
 
 //router.Methods('/router', handlers)
 routerAPI.get('/', (req, res) => {
@@ -14,5 +14,10 @@ routerAPI.get('/abc', (req, res) => {
 });
 
 routerAPI.get('/users', getUserAPI);
+routerAPI.post('/users', postUserAPI);
+routerAPI.put('/users/:id', putUserAPI);
+routerAPI.delete('/users/:id', deleteUserAPI);
 
+routerAPI.post('/customers/file', uploadFileAPI);
+routerAPI.post('/customers/files', handleFileUploads);
 module.exports = routerAPI;
